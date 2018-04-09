@@ -38,9 +38,9 @@ function render(table){
     while (givenColumn.firstChild) {
       givenColumn.removeChild(givenColumn.firstChild);
     }
-    for (var j = 0; j < table.foundations[i].length; j++){
-      var givenCard = table.foundations[i][j];
-      if (j === table.foundations[i].length - 1){
+    for (var j = 0; j < table.foundations[i].cards.length; j++){
+      var givenCard = table.foundations[i].cards[j];
+      if (j === table.foundations[i].cards.length - 1){
         givenCard.faceDown = false;
       }
       var cardSVG = buildCard(givenCard);
