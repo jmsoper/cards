@@ -37,7 +37,7 @@ function createDeck(){
     for (var i = 0; i < suits.length; i++){
       for (var j = 1; j < 14; j++){
         var cardFace = getCardType(j);
-        var card = { cardFace, suit: suits[i], faceUp: false };
+        var card = { cardFace, suit: suits[i], faceDown: true };
         deck.push(card);
       }
     }

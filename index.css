@@ -38,6 +38,11 @@
   position: absolute;
 }
 
+.card-cover.card-back {
+  border: 1px solid red;
+  background-color: darkred;
+}
+
 .card-suit {
   margin: 2px;
   height: 12px;

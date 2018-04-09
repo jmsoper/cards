@@ -8,6 +8,10 @@ function buildCard(card){
   
   var cardCover = document.createElement("div");
   cardCover.classList.add("card-cover");
+  
+  if (card.faceDown){
+    cardCover.classList.add("card-back");
+  }
   cardCover.addEventListener("mouseenter", function(e){
     e.target.parentElement.classList.add("hovered");
   });
@@ -35,7 +39,11 @@ function render(table){
       givenColumn.removeChild(givenColumn.firstChild);
     }
     for (var j = 0; j < table.foundations[i].length; j++){
-      var cardSVG = buildCard(table.foundations[i][j]);
+      var givenCard = table.foundations[i][j];
+      if (j === table.foundations[i].length - 1){
+        givenCard.faceDown = false;
+      }
+      var cardSVG = buildCard(givenCard);
       var cardYPosition = "top: " + (j * 18 + 2) + "px;";
       cardSVG.setAttribute("style", cardYPosition);
       givenColumn.appendChild(cardSVG);
