@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var cardSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     var cardId = givenCard.suit + givenCard.cardFace;
     cardSVG.setAttribute("stroke","black");
+    cardSVG.setAttribute("class", "card");
     cardSVG.setAttribute("id", cardId);
     cardSVG.setAttribute("fill", "white");
     cardSVG.setAttribute("height", "65");
@@ -103,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var cardOutline = document.createElementNS("http://www.w3.org/2000/svg","path");
     cardOutline.setAttribute("stroke","gray");
     cardOutline.setAttribute("fill", "black");
+    cardOutline.setAttribute("class", "card-outline");
     cardOutline.setAttribute("stroke-width", 3);
     cardOutline.setAttribute("d", paths["outline"]);
     cardGroup.appendChild(cardOutline);
@@ -152,6 +154,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     }
     table.stack = deck;
+    document.body.addEventListener("mousedown", function(e){
+      if (e.target.classList.contains("card")){
+        e.target.classList.add("action-card");
+      };
+    });
+    document.body.addEventListener("mouseup", function(e){
+      var cards = document.getElementsByClassName("action-card");
+      for (var i = 0; i < cards.length; i++){
+        cards[i].classList.remove("action-card");
+      }
+    });
     return table;
   }
   
