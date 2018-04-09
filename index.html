@@ -1,17 +1,32 @@
 <html>
   <head>
-    <script type="text/javascript" src="./paintcard.js"></script>
+    <link rel="stylesheet" type="text/css" href="./index.css">
   </head>
   <body id="body">
     <h1>hello world</h1>
     <div id="board">
-      <div class="mainboard"></div>
+      <div class="deal">
+        <div class="remaining"></div>
+      </div>
+      <div class="mainboard">
+        <div id="column-0" class="cardstack"></div>
+        <div id="column-1" class="cardstack"></div>
+        <div id="column-2" class="cardstack"></div>
+        <div id="column-3" class="cardstack"></div>
+        <div id="column-4" class="cardstack"></div>
+        <div id="column-5" class="cardstack"></div>
+        <div id="column-6" class="cardstack"></div>
+      </div>
       <div class="stash">
-        <div>clubs</div>
-        <div>spaces</div>
-        <div>hearts</div>
-        <div>diamonds</div>
+        <div class="stashbox">clubs</div>
+        <div class="stashbox">spaces</div>
+        <div class="stashbox">hearts</div>
+        <div class="stashbox">diamonds</div>
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="./game.js"></script>
 </html>
+
+
+
