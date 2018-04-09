@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
   function newGame(){
     var game = {};
-    game.deck = createDeck();
+    game.deck = createFullDeck();
     game.table = dealTable(game.deck);
     game.render = function() {
       return render(game.table);

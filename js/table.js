@@ -1,8 +1,9 @@
-function dealTable(deck){
+function dealTable(fullDeck){
   //deal the starter columns. 
   var table = {
     stock: undefined, 
     foundations: [],
+    offcast: undefined,
     /* each value in "stored" is a single card which can be overwritten if the directly next card in the same suit is put on top.
     */
     stored: {
@@ -17,22 +18,19 @@ function dealTable(deck){
     for (var j = 0; j <= i; j++){
       if (!table.foundations[i]){
         var nextCard;
-        table.foundations[i] = [];
-        nextCard = deck.getTopCard();
-        table.foundations[i].push(nextCard);
+        table.foundations[i] = deck();
+        nextCard = fullDeck.getTopCard();
+        table.foundations[i].addCard(nextCard);
       } else {
-        nextCard = deck.getTopCard();
-        table.foundations[i].push(nextCard);
+        nextCard = fullDeck.getTopCard();
+        table.foundations[i].addCard(nextCard);
       }
     }
   }
-  
-  function moveCard(card){
-    //store previous location
-    //set card to active card
-    //check possible locations with hover
-    //set card down. adjust state.
-  };
-  table.stock = deck;
+  function isLegalMove({ activeCard, orign, destination }){
+    return true;
+  }
+
+  table.stock = deck(fullDeck.cards);
   return table;
 }

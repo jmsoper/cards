@@ -6,6 +6,8 @@
 #board {
   display: flex;
   flex-direction: row;
+  padding: 10px;
+  border: 1px solid gray;
 }
 
 .card {
@@ -54,14 +56,13 @@
 #stock {
   height: 75px;
   width: 55px;
-  background-color: blue;
-  margin-top: 2px;
+  background-color: maroon;
+  margin: 2px auto;
   position: relative;
 }
 
 .mainboard {
   flex-grow: 2;
-  border: 2px solid lightgray;
   display: flex;
   justify-content: space-around;
 }
@@ -73,12 +74,13 @@
 .cardstack {
   height: 70px;
   width: 50px;
-  border: 3px solid red;
+  border: 3px solid maroon;
   position: relative;
 }
 
 .deal {
   width: 60px;
+  background-color: lightgray;
 }
 
 .stash {

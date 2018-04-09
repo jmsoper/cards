@@ -1,17 +1,25 @@
-function createDeck(){
-  var deck = {};
-  var cards = getAllCards();
-  var shuffledCards = shuffleDeckInPlace(cards);
-  deck.cards = shuffledCards;
-  deck.getTopCard = function(){
+function deck(cards) {
+  var cardDeck = {};
+  cardDeck.cards = cards || [];
+  cardDeck.getTopCard = function(){
     var topCard = this.cards[0];
     this.cards = this.cards.slice(1);
     return topCard;
   }
+  cardDeck.addCard = function(card){
+    this.cards.push(card);
+  }
+  return cardDeck;
+}
+
+function createFullDeck(){
+  var fullDeck = deck();
+  fullDeck.cards = shuffleDeckInPlace(getAllCards());
+  
 
   function getAllCards(){
     var suits = ["spades", "hearts", "clubs", "diamonds"];
-    var deck = [];
+    var allCardsDeck = [];
     
     function getCardType(cardNumber){
       var cardFace;
@@ -38,10 +46,10 @@ function createDeck(){
       for (var j = 1; j < 14; j++){
         var cardFace = getCardType(j);
         var card = { cardFace, suit: suits[i], faceDown: true };
-        deck.push(card);
+        allCardsDeck.push(card);
       }
     }
-    return deck;
+    return allCardsDeck;
   }
   //shuffle the cards so that they're random. Use fisher-bates.
   function shuffleDeckInPlace(cardDeck){
@@ -64,5 +72,5 @@ function createDeck(){
     
     return cardDeck;
   }
-  return deck;
+  return fullDeck;
 }
