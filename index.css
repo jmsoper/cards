@@ -12,6 +12,24 @@
   font-size: 12px;
   position: absolute;
   left: 3px;
+  height: 75px;
+  width: 45px;
+  border: 1px solid black;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-face {
+  margin: 2px;
+}
+
+.card-suit {
+  margin: 2px;
+  height: 12px;
+  width: 12px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #stock {
