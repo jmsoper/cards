@@ -139,15 +139,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     for (var i = 0; i < 7; i++){
       for (var j = 0; j <= i; j++){
         if (!table.foundations[i]){
+          var nextCard;
           table.foundations[i] = [];
-          var nextCard = deck.getTopCard();
+          nextCard = deck.getTopCard();
           table.foundations[i].push(nextCard);
-          console.log(nextCard);
-          var column = document.getElementById("column-" + i);
-          console.log("column: ", column);
-          column.appendChild(paintCard(nextCard));
+          document.getElementById("column-" + i).appendChild(paintCard(nextCard));
         } else {
-          table.foundations[i].push(deck.getTopCard());
+          nextCard = deck.getTopCard();
+          table.foundations[i].push(nextCard);
           document.getElementById("column-" + i).appendChild(paintCard(nextCard));
         }
       }
