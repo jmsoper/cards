@@ -2,17 +2,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function newGame(){
     var game = {};
     game.deck = createDeck();
-    game.board = dealTable(game.deck);
+    game.table = dealTable(game.deck);
+    game.render = function() {
+      return render(game.table);
+    }
     game.isOver = false;
-    console.log(game.board);
     return game;
   }
   
-  function render(){
-    
-  }
-  
-  
-  newGame();
+  var game = newGame();
+  game.render();
     
 });

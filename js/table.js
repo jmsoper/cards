@@ -65,11 +65,9 @@ function dealTable(deck){
         table.foundations[i] = [];
         nextCard = deck.getTopCard();
         table.foundations[i].push(nextCard);
-        document.getElementById("column-" + i).appendChild(paintCard(nextCard));
       } else {
         nextCard = deck.getTopCard();
         table.foundations[i].push(nextCard);
-        document.getElementById("column-" + i).appendChild(paintCard(nextCard));
       }
     }
   }
