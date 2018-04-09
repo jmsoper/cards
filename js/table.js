@@ -50,9 +50,12 @@ function paintCard(givenCard){
 function dealTable(deck){
   //deal the starter columns. 
   var table = {
-    stack: undefined, 
+    stock: undefined, 
     foundations: [],
-    stored: {clubs: undefined,
+    /* each value in "stored" is a single card which can be overwritten if the directly next card in the same suit is put on top.
+    */
+    stored: {
+      clubs: undefined,
       spades: undefined,
       diamonds: undefined,
       hearts: undefined}
@@ -71,6 +74,6 @@ function dealTable(deck){
       }
     }
   }
-  table.stack = deck;
+  table.stock = deck;
   return table;
 }
