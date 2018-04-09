@@ -8,6 +8,13 @@ function buildCard(card){
   
   var cardCover = document.createElement("div");
   cardCover.classList.add("card-cover");
+  cardCover.addEventListener("mouseenter", function(e){
+    e.target.parentElement.classList.add("hovered");
+  });
+  
+  cardCover.addEventListener("mouseleave", function(e){
+    e.target.parentElement.classList.remove("hovered");
+  });
   
   var cardFace = document.createElement("p");
   cardFace.innerHTML = String(card.cardFace).slice(0,1);
