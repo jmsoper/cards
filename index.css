@@ -10,6 +10,8 @@
 .card {
   background-color: white;
   font-size: 12px;
+  position: absolute;
+  left: 3px;
 }
 
 .mainboard {

@@ -6,7 +6,11 @@ function render(table){
       givenColumn.removeChild(givenColumn.firstChild);
     }
     for (var j = 0; j < table.foundations[i].length; j++){
-      givenColumn.appendChild(paintCard(table.foundations[i][j]));
+      var cardSVG = paintCard(table.foundations[i][j]);
+      var cardYPosition = "top: " + (j * 7) + "px;";
+      console.log(cardYPosition);
+      cardSVG.setAttribute("style", cardYPosition);
+      givenColumn.appendChild(cardSVG);
     }
   }
 }
