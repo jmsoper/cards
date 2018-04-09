@@ -6,12 +6,16 @@ function buildCard(card){
   image.setAttribute("style", "background-image: url('./images/" + card.suit + ".svg');");
   image.classList.add("card-suit");
   
+  var cardCover = document.createElement("div");
+  cardCover.classList.add("card-cover");
+  
   var cardFace = document.createElement("p");
   cardFace.innerHTML = String(card.cardFace).slice(0,1);
   cardFace.classList.add("card-face");
   
   cardImage.appendChild(image);
   cardImage.appendChild(cardFace);
+  cardImage.appendChild(cardCover);
   
   return cardImage;
 }
