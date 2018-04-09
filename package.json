@@ -1,0 +1,23 @@
+{
+  "name": "cards",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "scripts": {
+    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmsoper/cards.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmsoper/cards/issues"
+  },
+  "homepage": "https://github.com/jmsoper/cards#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0"
+  }
+}
