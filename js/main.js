@@ -1,16 +1,25 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
   function newGame(){
     var game = {};
-    game.deck = createFullDeck();
-    game.table = dealTable(game.deck);
-    game.render = function() {
-      return render(game.table);
-    }
+    game.fullDeck = createFullDeck();
+    game.table = dealTable(game.fullDeck);
     game.isOver = false;
     return game;
   }
   
   var game = newGame();
-  game.render();
-    
-});
+  game.table.moveCard(
+    {
+      originDeck: game.table.foundations[0],
+      destinationDeck: game.table.foundations[1]
+    }
+  );
+  
+  
+  
+  //XX every deck has the method addCard
+  //XX every deck has the method takeTopCard
+  //every deck has the method takeTopCards
+  //every deck has private method canAddCard?
+  //every has a readCard method
+  
+  //XX table has method moveCard

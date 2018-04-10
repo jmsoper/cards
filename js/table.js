@@ -11,7 +11,8 @@ function dealTable(fullDeck){
       spades: undefined,
       diamonds: undefined,
       hearts: undefined
-    }
+    },
+    moveCard: moveCard,
   };
   
   for (var i = 0; i < 7; i++){
@@ -27,8 +28,26 @@ function dealTable(fullDeck){
       }
     }
   }
-  function isLegalMove({ activeCard, orign, destination }){
-    return true;
+  function moveCard({ originDeck, destinationDeck }){
+    var movingCard = originDeck.peekAtCard();
+    var destinationCard = destinationDeck.peekAtCard();
+    if ( isValidMove({movingCard, destinationCard}) ){
+      var card = originDeck.getTopCard();
+      destinationDeck.addCard(card);
+    }
+  }
+  
+  function isValidMove({ movingCard, destinationCard }){
+    if ( 
+      movingCard.faceDown ||
+      destinationCard.faceDown ||
+      (movingCard.color === destinationCard.color ) ||
+      (movingCard.cardValue != (destinationCard.cardValue - 1))
+    ){
+      return false
+    } else {
+      return true;
+    }  
   }
 
   table.stock = deck(fullDeck.cards);

@@ -9,43 +9,57 @@ function deck(cards) {
   cardDeck.addCard = function(card){
     this.cards.push(card);
   }
+  cardDeck.peekAtCard = function(cardNumber){
+    var index = cardNumber || 0;
+    return this.cards[index];
+  }
   return cardDeck;
 }
 
 function createFullDeck(){
   var fullDeck = deck();
   fullDeck.cards = shuffleDeckInPlace(getAllCards());
-  
 
   function getAllCards(){
-    var suits = ["spades", "hearts", "clubs", "diamonds"];
+    var suits = [
+      { name: "spades", color: "black" }, 
+      { name: "hearts", color: "red"},
+      { name: "clubs", color: "black" },
+      { name: "diamonds", color: "red"}
+    ];
     var allCardsDeck = [];
     
     function getCardType(cardNumber){
-      var cardFace;
+      var cardName;
       switch (cardNumber){
         case 1:
-          cardFace = "ace";
+          cardName = "ace";
           break;
         case 11: 
-          cardFace = "jack";
+          cardName = "jack";
           break;
         case 12:
-          cardFace = "queen";
+          cardName = "queen";
           break;
         case 13:
-          cardFace = "king";
+          cardName = "king";
           break;
         default:
-          cardFace = cardNumber;
+          cardName = cardNumber;
       }
-      return cardFace;
+      return cardName;
     }
     
     for (var i = 0; i < suits.length; i++){
       for (var j = 1; j < 14; j++){
-        var cardFace = getCardType(j);
-        var card = { cardFace, suit: suits[i], faceDown: true };
+        var cardName = getCardType(j);
+        var card = {
+          color: suits[i].color,
+          cardName,
+          suit: suits[i].name,
+          faceDown: true,
+          cardNumber: j,
+        };
         allCardsDeck.push(card);
       }
     }
