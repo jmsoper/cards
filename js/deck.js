@@ -1,5 +1,6 @@
 function deck(cards) {
   var cardDeck = {};
+  cardDeck.topCard = undefined;
   cardDeck.cards = cards || [];
   cardDeck.getTopCard = function(){
     var topCard = this.cards[0];
@@ -12,6 +13,9 @@ function deck(cards) {
   cardDeck.peekAtCard = function(cardNumber){
     var index = cardNumber || 0;
     return this.cards[index];
+  }
+  if (cardDeck.cards.length){
+    cardDeck.topCard = cardDeck.cards[cardDeck.cards.length - 1];
   }
   return cardDeck;
 }
@@ -63,6 +67,7 @@ function createFullDeck(){
         allCardsDeck.push(card);
       }
     }
+    
     return allCardsDeck;
   }
   //shuffle the cards so that they're random. Use fisher-bates.

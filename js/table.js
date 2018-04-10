@@ -44,6 +44,7 @@ function dealTable(fullDeck){
       (movingCard.color === destinationCard.color ) ||
       (movingCard.cardValue != (destinationCard.cardValue - 1))
     ){
+      console.log("invalid move");
       return false
     } else {
       return true;

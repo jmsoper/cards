@@ -14,12 +14,15 @@
     }
   );
   
+  console.log(game.table);
+  
   
   
   //XX every deck has the method addCard
   //XX every deck has the method takeTopCard
   //every deck has the method takeTopCards
+  //cards need sufficient data to check for movability
   //every deck has private method canAddCard?
-  //every has a readCard method
+  //XX every has a readCard method
   
   //XX table has method moveCard
