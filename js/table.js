@@ -26,16 +26,6 @@ function table(){
       diamonds: undefined,
       hearts: undefined
     },
-    storeCard: function({ originDeck }){
-      var cardToBeStored = originDeck.peekAtCard();
-      var lastStoredCardOfSuit = this.stored[cardToBeStored.suit];
-      if ( cardToBeStored.cardValue  = lastStoredCardOfSuit.cardValue + 1 ){
-        originDeck.getTopCard;
-        this.stored[cardToBeStored.suit] = cardToBeStored;
-      } else {
-        console.log("that card cannot be stored yet.");
-      }
-    },
     moveCard: function ({ originDeck, destinationDeck }){
       var movingCard = originDeck.peekAtCard();
       var destinationCard = destinationDeck.peekAtCard();
@@ -50,6 +40,25 @@ function table(){
       if ( isValidMove({movingCard: topMovingCard, destinationCard})){
         var cards = originDeck.getCards(topCardIndex);
         destinationDeck.addCards(cards);
+      }
+    },
+    storedPilesAreFull: function(){
+      var allStoredPilesAreFull = true;
+      for (suit in this.stored){
+        if (this.stored[suit].cardValue < 13){
+          allStoredPilesareFull =  false;
+        }
+      }
+      return allStoredPilesareFull;
+    }
+    storeCard: function({ originDeck }){
+      var cardToBeStored = originDeck.peekAtCard();
+      var lastStoredCardOfSuit = this.stored[cardToBeStored.suit];
+      if ( cardToBeStored.cardValue  = lastStoredCardOfSuit.cardValue + 1 ){
+        originDeck.getTopCard;
+        this.stored[cardToBeStored.suit] = cardToBeStored;
+      } else {
+        console.log("that card cannot be stored yet.");
       }
     },
   };

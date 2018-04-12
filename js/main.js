@@ -2,7 +2,9 @@
     var game = {};
     game.fullDeck = createFullDeck();
     game.table = dealTable(game.fullDeck);
-    game.isOver = false;
+    game.isOver = function(){
+      return game.table.storedPilesAreFull();
+    };
     return game;
   }
   
@@ -18,9 +20,9 @@
   
   
   
-  //we can move cards 
-  //we can check if a move is legal 
+  //XX we can move cards 
+  //XX we can check if a move is legal 
   //we need to set up the stock pile with methods?
   //the stock needs to rotate with the discard pile
-  //the ...foundations? need to get built up
-  //the 
+  //XX the ...foundations? need to get built up
+  //XX we need to check for the winning condition 

@@ -5,11 +5,13 @@ function deck(cards) {
   cardDeck.getTopCard = function(){
     var topCard = this.cards[0];
     this.cards = this.cards.slice(1);
+    this.cards[0].faceDown = false;
     return topCard;
   }
   cardDeck.getCards = function(topCardIndex){
     var cards = this.cards.slice(0, topCardIndex + 1);
     this.cards = this.cards.slice(topCardIndex + 1);
+    this.cards[0].faceDown = false;
     return cards;
   }
   cardDeck.addCard = function(card){
