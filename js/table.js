@@ -16,49 +16,49 @@ function table(){
   
   var table = {
     stock: undefined, 
-    foundations: [],
+    piles: [],
     offcast: undefined,
-    /* each value in "stored" is a single card which can be overwritten if the directly next card in the same suit is put on top.
+    /* each value in "foundations" is a single card which can be overwritten if the directly next card in the same suit is put on top.
     */
-    stored: {
+    foundations: {
       clubs: undefined,
       spades: undefined,
       diamonds: undefined,
       hearts: undefined
     },
-    moveCard: function ({ originDeck, destinationDeck }){
-      var movingCard = originDeck.peekAtCard();
-      var destinationCard = destinationDeck.peekAtCard();
+    moveCard: function ({ originPile, destinationPile }){
+      var movingCard = originPile.peekAtCard();
+      var destinationCard = destinationPile.peekAtCard();
       if ( isValidMove({movingCard, destinationCard}) ){
-        var card = originDeck.getTopCard();
-        destinationDeck.addCard(card);
+        var card = originPile.getTopCard();
+        destinationPile.addCard(card);
       }
     },
-    moveCards: function ({ originDeck, topCardIndex, destinationDeck}){
-      var topMovingCard = originDeck.peekAtCard(topCardIndex);
-      var destinationCard = destinationDeck.peekAtCard();
+    moveCards: function ({ originPile, topCardIndex, destinationPile}){
+      var topMovingCard = originPile.peekAtCard(topCardIndex);
+      var destinationCard = destinationPile.peekAtCard();
       if ( isValidMove({movingCard: topMovingCard, destinationCard})){
-        var cards = originDeck.getCards(topCardIndex);
-        destinationDeck.addCards(cards);
+        var cards = originPile.getCards(topCardIndex);
+        destinationPile.addCards(cards);
       }
     },
-    storedPilesAreFull: function(){
-      var allStoredPilesAreFull = true;
-      for (suit in this.stored){
-        if (this.stored[suit].cardValue < 13){
-          allStoredPilesareFull =  false;
+    foundationsAreFull: function(){
+      var allFoundationsAreFull = true;
+      for (suit in this.foundations){
+        if (this.foundations[suit].cardValue < 13){
+          allFoundationsareFull =  false;
         }
       }
-      return allStoredPilesareFull;
-    }
-    storeCard: function({ originDeck }){
-      var cardToBeStored = originDeck.peekAtCard();
-      var lastStoredCardOfSuit = this.stored[cardToBeStored.suit];
+      return allFoundationsareFull;
+    },
+    storeCard: function({ originPile }){
+      var cardToBeStored = originPile.peekAtCard();
+      var lastStoredCardOfSuit = this.foundations[cardToBeStored.suit];
       if ( cardToBeStored.cardValue  = lastStoredCardOfSuit.cardValue + 1 ){
-        originDeck.getTopCard;
-        this.stored[cardToBeStored.suit] = cardToBeStored;
+        originPile.getTopCard;
+        this.foundations[cardToBeStored.suit] = cardToBeStored;
       } else {
-        console.log("that card cannot be stored yet.");
+        console.log("that card cannot be added to the foundation yet.");
       }
     },
   };
@@ -72,14 +72,14 @@ function dealTable(fullDeck){
   
   for (var i = 0; i < 7; i++){
     for (var j = 0; j <= i; j++){
-      if (!dealtTable.foundations[i]){
+      if (!dealtTable.piles[i]){
         var nextCard;
-        dealtTable.foundations[i] = deck();
+        dealtTable.piles[i] = deck();
         nextCard = fullDeck.getTopCard();
-        dealtTable.foundations[i].addCard(nextCard);
+        dealtTable.piles[i].addCard(nextCard);
       } else {
         nextCard = fullDeck.getTopCard();
-        dealtTable.foundations[i].addCard(nextCard);
+        dealtTable.piles[i].addCard(nextCard);
       }
     }
   }
