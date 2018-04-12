@@ -1,7 +1,7 @@
 function table(){
-  
+
   function isValidMove({ movingCard, destinationCard }){
-    if ( 
+    if (
       movingCard.faceDown ||
       destinationCard.faceDown ||
       (movingCard.color === destinationCard.color ) ||
@@ -11,13 +11,12 @@ function table(){
       return false
     } else {
       return true;
-    }  
+    }
   }
-  
+
   var table = {
-    stock: undefined, 
+    stock: undefined,
     piles: [],
-    offcast: undefined,
     /* each value in "foundations" is a single card which can be overwritten if the directly next card in the same suit is put on top.
     */
     foundations: {
@@ -62,14 +61,14 @@ function table(){
       }
     },
   };
-  
+
   return table;
 }
 
 function dealTable(fullDeck){
-  //deal the starter columns. 
+  //deal the starter columns.
   var dealtTable = table();
-  
+
   for (var i = 0; i < 7; i++){
     for (var j = 0; j <= i; j++){
       if (!dealtTable.piles[i]){
@@ -83,7 +82,6 @@ function dealTable(fullDeck){
       }
     }
   }
-
-  dealtTable.stock = deck(fullDeck.cards);
+  dealtTable.stock = stock(fullDeck.cards);
   return dealtTable;
 }
