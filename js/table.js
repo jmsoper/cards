@@ -83,6 +83,11 @@ function dealTable(fullDeck){
       }
     }
   }
-  dealtTable.stock = stock(fullDeck.cards);
+  //this is a mess...
+  dealtTable.stock = stock();
+  while (fullDeck.length){
+    var leftoverCard = fullDeck.takeCard();
+    dealtTable.stock.addCard(leftoverCard);
+  }
   return dealtTable;
 }

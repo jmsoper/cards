@@ -6,7 +6,8 @@ function deck(givenCards) {
     card.faceDown = !card.faceDown;
   }
   cardDeck.setTopCard = function(){
-    var topCard = cards[this.length - 1];
+    var index = cards.length - 1;
+    var topCard = cards[index];
     return topCard;
   }
   cardDeck.readCard = function(cardIndex){
@@ -47,10 +48,10 @@ function deck(givenCards) {
   return cardDeck;
 }
 
-function stock(){
+function stock(givenCards){
   //the stock can only take one card out at a time.
   //the stock has its own pile, the castoff stack.
-  var stock = {};
+  var stock = deck(givenCards);
   //initialize the castoff pile as a deck.
   stock.castOff = deck();
   stock.revealCard = function(){
