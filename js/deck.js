@@ -7,8 +7,16 @@ function deck(cards) {
     this.cards = this.cards.slice(1);
     return topCard;
   }
+  cardDeck.getCards = function(topCardIndex){
+    var cards = this.cards.slice(0, topCardIndex + 1);
+    this.cards = this.cards.slice(topCardIndex + 1);
+    return cards;
+  }
   cardDeck.addCard = function(card){
-    this.cards.push(card);
+    this.cards.unshift(card);
+  }
+  cardDeck.addCards = function(cards){
+    this.cards = cards + this.cards;
   }
   cardDeck.peekAtCard = function(cardNumber){
     var index = cardNumber || 0;

@@ -13,6 +13,7 @@ function dealTable(fullDeck){
       hearts: undefined
     },
     moveCard: moveCard,
+    moveCards: moveCards
   };
   
   for (var i = 0; i < 7; i++){
@@ -34,6 +35,15 @@ function dealTable(fullDeck){
     if ( isValidMove({movingCard, destinationCard}) ){
       var card = originDeck.getTopCard();
       destinationDeck.addCard(card);
+    }
+  }
+  
+  function moveCards({ originDeck, topCardIndex, destinationDeck}){
+    var topMovingCard = originDeck.peekAtCard(topCardIndex);
+    var destinationCard = destinationDeck.peekAtCard();
+    if ( isValidMove({movingCard: topMovingCard, destinationCard})){
+      var cards = originDeck.getCards(topCardIndex);
+      destinationDeck.addCards(cards);
     }
   }
   
