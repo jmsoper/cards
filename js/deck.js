@@ -9,7 +9,11 @@ function deck(givenCards) {
     var topCard = cards[this.length - 1];
     return topCard;
   }
-  cardDeck.topCard = setTopCard();
+  cardDeck.readCard = function(cardIndex){
+    var index = cardIndex || 0;
+    return cards[index];
+  }
+  cardDeck.topCard = cardDeck.setTopCard();
   cardDeck.takeCard = function(numberOfCards){
     /* decks which are piles will be rendered from zero (the topmost, furthest back card),
     to the last index, the frontmost card which is visible.
@@ -41,14 +45,6 @@ function deck(givenCards) {
   }
 
   return cardDeck;
-}
-
-function pile(givenCards){
-  var pile = deck();
-  cardDeck.readCard = function(cardIndex){
-    var index = cardIndex || 0;
-    return cards[index];
-  }
 }
 
 function stock(){

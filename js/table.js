@@ -26,18 +26,19 @@ function table(){
       hearts: undefined
     },
     moveCard: function ({ originPile, destinationPile }){
-      var movingCard = originPile.peekAtCard();
-      var destinationCard = destinationPile.peekAtCard();
-      if ( isValidMove({movingCard, destinationCard}) ){
-        var card = originPile.getTopCard();
+      //we don't need to check for movingCard index because it's only one card.
+      var movingCard = originPile.readCard();
+      var destinationCard = destinationPile.readCard();
+      if ( isValidMove({ movingCard, destinationCard }) ){
+        var card = originPile.takeCard();
         destinationPile.addCard(card);
       }
     },
-    moveCards: function ({ originPile, topCardIndex, destinationPile}){
-      var topMovingCard = originPile.peekAtCard(topCardIndex);
-      var destinationCard = destinationPile.peekAtCard();
+    moveCards: function ({ originPile, numberOfCards, destinationPile}){
+      var topMovingCard = originPile.readCard(originPile.length - numberOfCards);
+      var destinationCard = destinationPile.readCard();
       if ( isValidMove({movingCard: topMovingCard, destinationCard})){
-        var cards = originPile.getCards(topCardIndex);
+        var cards = originPile.takeCard(numberOfCards);
         destinationPile.addCards(cards);
       }
     },
@@ -51,10 +52,10 @@ function table(){
       return allFoundationsareFull;
     },
     storeCard: function({ originPile }){
-      var cardToBeStored = originPile.peekAtCard();
+      var cardToBeStored = originPile.readCard();
       var lastStoredCardOfSuit = this.foundations[cardToBeStored.suit];
       if ( cardToBeStored.cardValue  = lastStoredCardOfSuit.cardValue + 1 ){
-        originPile.getTopCard;
+        originPile.takeCard();
         this.foundations[cardToBeStored.suit] = cardToBeStored;
       } else {
         console.log("that card cannot be added to the foundation yet.");
@@ -74,10 +75,10 @@ function dealTable(fullDeck){
       if (!dealtTable.piles[i]){
         var nextCard;
         dealtTable.piles[i] = deck();
-        nextCard = fullDeck.getTopCard();
+        nextCard = fullDeck.takeCard();
         dealtTable.piles[i].addCard(nextCard);
       } else {
-        nextCard = fullDeck.getTopCard();
+        nextCard = fullDeck.takeCard();
         dealtTable.piles[i].addCard(nextCard);
       }
     }
