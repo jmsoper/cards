@@ -51,6 +51,28 @@ function pile(givenCards){
   }
 }
 
+function stock(){
+  //the stock can only take one card out at a time.
+  //the stock has its own pile, the castoff stack.
+  var stock = {};
+  //initialize the castoff pile as a deck.
+  stock.castOff = deck();
+  stock.revealCard = function(){
+    if (stock.length){
+      //show a new card and move it into the castoff pile
+      var nextCard = stock.takeCard(1);
+      stock.castOff.addCard(nextCard);
+    } else if (stock.castOff.length){
+      //rotate the cards in the castoff pile back into the stock.
+      while (stock.castOff.length){
+        var card = stock.castOff.takeCard();
+        stock.addCard(card);
+      }
+    }
+  }
+  return stock;
+}
+
 function createFullDeck(){
   var shuffledCards = shuffleDeckInPlace(getAllCards());
   var fullDeck = deck(shuffledCards);
